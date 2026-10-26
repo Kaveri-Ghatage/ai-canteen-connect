@@ -1,0 +1,15 @@
+# Runs the backend API and the ML service together.
+# Create backend/.env first (copy backend/.env.example and fill it in).
+services:
+  backend:
+    build: ./backend
+    env_file: ./backend/.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - ml-service
+
+  ml-service:
+    build: ./ml-service
+    ports:
+      - "8000:8000"
